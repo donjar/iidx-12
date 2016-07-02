@@ -1,0 +1,18 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - '**/Gemfile'
+
+Style/Documentation:
+  Enabled: false
+
+Rails:
+  Enabled: true

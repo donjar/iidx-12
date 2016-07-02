@@ -1,53 +1,59 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <%= form_for :chart, url: refresh_path, html: { class: 'form-inline' } do |f| %>
+    <h1>Charts Index</h1>
+    <%= f.text_field :username, class: 'form-control', placeholder: 'iidx.me username', value: 'donjar' %>
+    <%= f.text_field :mode, class: 'form-control', placeholder: 'sp or dp', value: 'sp' %>
+    <%= f.text_field :level, class: 'form-control', placeholder: 'level', value: '12' %>
+    <%= f.submit 'Refresh', class: 'btn btn-default' %>
+  <% end %>
 
-<h1>Charts</h1>
+  <div>
+    <%= link_to '<= RA', params.merge({ max_version: 18 }), class: 'btn btn-success' %>
+    <%= link_to '<= Lin', params.merge({ max_version: 19 }), class: 'btn btn-success'%>
+    <%= link_to '<= tri', params.merge({ max_version: 20 }), class: 'btn btn-success' %>
+    <%= link_to '<= SPA', params.merge({ max_version: 21 }), class: 'btn btn-success' %>
+    <%= link_to '<= PEN', params.merge({ max_version: 22 }), class: 'btn btn-success' %>
+    <%= link_to '<= cop', params.merge({ max_version: 23 }), class: 'btn btn-success' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Songid</th>
-      <th>Diff</th>
-      <th>Notes</th>
-      <th>Title</th>
-      <th>Version</th>
-      <th>Clear</th>
-      <th>Score</th>
-      <th>Miss</th>
-      <th>Gimmicks</th>
-      <th>Nc level</th>
-      <th>Hc level</th>
-      <th>Target clear</th>
-      <th>Target priority</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <%= link_to '< HC', params.merge({ max_clear: 4 }), class: 'btn btn-warning' %>
+    <%= link_to '< NC', params.merge({ max_clear: 3 }), class: 'btn btn-warning' %>
+    <%= link_to '< EC', params.merge({ max_clear: 2 }), class: 'btn btn-warning' %>
 
-  <tbody>
-    <% @charts.each do |chart| %>
+    <%= link_to 'Low Priority', params.merge({ min_priority: 1 }), class: 'btn btn-info' %>
+    <%= link_to 'Med Priority', params.merge({ min_priority: 2 }), class: 'btn btn-info' %>
+    <%= link_to 'High Priority', params.merge({ min_priority: 3 }), class: 'btn btn-info' %>
+  </div>
+
+  <table class="table table-condensed table-responsive table-striped">
+    <thead>
       <tr>
-        <td><%= chart.songid %></td>
-        <td><%= chart.diff %></td>
-        <td><%= chart.notes %></td>
-        <td><%= chart.title %></td>
-        <td><%= chart.version %></td>
-        <td><%= chart.clear %></td>
-        <td><%= chart.score %></td>
-        <td><%= chart.miss %></td>
-        <td><%= chart.gimmicks %></td>
-        <td><%= chart.nc_level %></td>
-        <td><%= chart.hc_level %></td>
-        <td><%= chart.target_clear %></td>
-        <td><%= chart.target_priority %></td>
-        <td><%= chart.description %></td>
-        <td><%= link_to 'Show', chart %></td>
-        <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
-        <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Clear</th>
+        <th>Notes</th>
+        <th>Version</th>
+        <th>Title</th>
+        <th>HC</th>
+        <th>NC</th>
+        <th>Rank</th>
+        <th>Miss Count</th>
+        <th>Target</th>
+        <th>Description</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Chart', new_chart_path %>
+    </thead>
+    <tbody>
+      <% @charts.each do |chart| %>
+        <tr>
+          <td style="background-color: <%= chart.clear %>"</td>
+          <td><%= chart.notes %></td>
+          <td><%= chart.version %></td>
+          <td><%= chart.title %> <%= chart.diff %></td>
+          <td><%= bold(chart.hc_level) if chart.gimmicks %></td>
+          <td><%= bold(chart.nc_level) if chart.gimmicks %></td>
+          <td><%= chart.calc_rank %></td>
+          <td><%= chart.miss %></td>
+          <td><%= chart.target_clear %></td>
+          <td><%= chart.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
