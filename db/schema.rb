@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160702014138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "charts", force: :cascade do |t|
+    t.integer  "songid"
+    t.string   "diff"
+    t.integer  "notes"
+    t.string   "title"
+    t.integer  "version"
+    t.integer  "clear"
+    t.integer  "score"
+    t.integer  "miss"
+    t.boolean  "gimmicks"
+    t.integer  "nc_level"
+    t.integer  "hc_level"
+    t.integer  "target_clear"
+    t.integer  "target_priority"
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
 end

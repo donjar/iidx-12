@@ -1,0 +1,87 @@
+<%= form_for(chart) do |f| %>
+  <% if chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chart.errors.count, "error") %> prohibited this chart from being saved:</h2>
+
+      <ul>
+      <% chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :songid %>
+    <%= f.number_field :songid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :diff %>
+    <%= f.text_field :diff %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes %>
+    <%= f.number_field :notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :version %>
+    <%= f.number_field :version %>
+  </div>
+
+  <div class="field">
+    <%= f.label :clear %>
+    <%= f.number_field :clear %>
+  </div>
+
+  <div class="field">
+    <%= f.label :score %>
+    <%= f.number_field :score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :miss %>
+    <%= f.number_field :miss %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gimmicks %>
+    <%= f.check_box :gimmicks %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nc_level %>
+    <%= f.number_field :nc_level %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hc_level %>
+    <%= f.number_field :hc_level %>
+  </div>
+
+  <div class="field">
+    <%= f.label :target_clear %>
+    <%= f.number_field :target_clear %>
+  </div>
+
+  <div class="field">
+    <%= f.label :target_priority %>
+    <%= f.number_field :target_priority %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

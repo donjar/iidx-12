@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Charts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Songid</th>
+      <th>Diff</th>
+      <th>Notes</th>
+      <th>Title</th>
+      <th>Version</th>
+      <th>Clear</th>
+      <th>Score</th>
+      <th>Miss</th>
+      <th>Gimmicks</th>
+      <th>Nc level</th>
+      <th>Hc level</th>
+      <th>Target clear</th>
+      <th>Target priority</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @charts.each do |chart| %>
+      <tr>
+        <td><%= chart.songid %></td>
+        <td><%= chart.diff %></td>
+        <td><%= chart.notes %></td>
+        <td><%= chart.title %></td>
+        <td><%= chart.version %></td>
+        <td><%= chart.clear %></td>
+        <td><%= chart.score %></td>
+        <td><%= chart.miss %></td>
+        <td><%= chart.gimmicks %></td>
+        <td><%= chart.nc_level %></td>
+        <td><%= chart.hc_level %></td>
+        <td><%= chart.target_clear %></td>
+        <td><%= chart.target_priority %></td>
+        <td><%= chart.description %></td>
+        <td><%= link_to 'Show', chart %></td>
+        <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
+        <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chart', new_chart_path %>

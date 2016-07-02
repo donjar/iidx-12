@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  songid: 1
+  diff: MyString
+  notes: 1
+  title: MyString
+  version: 1
+  clear: 1
+  score: 1
+  miss: 1
+  gimmicks: false
+  nc_level: 1
+  hc_level: 1
+  target_clear: 1
+  target_priority: 1
+  description: MyString
+
+two:
+  songid: 1
+  diff: MyString
+  notes: 1
+  title: MyString
+  version: 1
+  clear: 1
+  score: 1
+  miss: 1
+  gimmicks: false
+  nc_level: 1
+  hc_level: 1
+  target_clear: 1
+  target_priority: 1
+  description: MyString
