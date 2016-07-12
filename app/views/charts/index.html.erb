@@ -1,6 +1,7 @@
 <div class="container">
   <%= form_for :chart, url: refresh_path, html: { class: 'form-inline' } do |f| %>
     <h1>Charts Index</h1>
+    <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
     <%= f.text_field :username, class: 'form-control', placeholder: 'iidx.me username', value: 'donjar' %>
     <%= f.text_field :mode, class: 'form-control', placeholder: 'sp or dp', value: 'sp' %>
     <%= f.text_field :level, class: 'form-control', placeholder: 'level', value: '12' %>
@@ -8,6 +9,7 @@
   <% end %>
 
   <div>
+    <h2>Filter</h2>
     <%= link_to '<= RA', params.merge({ max_version: 18 }), class: 'btn btn-success' %>
     <%= link_to '<= Lin', params.merge({ max_version: 19 }), class: 'btn btn-success'%>
     <%= link_to '<= tri', params.merge({ max_version: 20 }), class: 'btn btn-success' %>
@@ -22,6 +24,19 @@
     <%= link_to 'Low Priority', params.merge({ min_priority: 1 }), class: 'btn btn-info' %>
     <%= link_to 'Med Priority', params.merge({ min_priority: 2 }), class: 'btn btn-info' %>
     <%= link_to 'High Priority', params.merge({ min_priority: 3 }), class: 'btn btn-info' %>
+  </div>
+
+  <div>
+    <h2>Sort</h2>
+    <%= link_to 'Alphabet', params.merge({ sort: 'alpha' }), class: 'btn btn-danger' %>
+    <%= link_to 'NC level', params.merge({ sort: 'nc' }), class: 'btn btn-danger' %>
+    <%= link_to 'HC level', params.merge({ sort: 'hc' }), class: 'btn btn-danger' %>
+    <%= link_to 'BPM', params.merge({ sort: 'bpm' }), class: 'btn btn-danger' %>
+    <%= link_to 'Notes', params.merge({ sort: 'notes' }), class: 'btn btn-danger' %>
+    <%= link_to 'Clear', params.merge({ sort: 'clear' }), class: 'btn btn-danger' %>
+    <%= link_to 'Priority', params.merge({ sort: 'priority' }), class: 'btn btn-danger' %>
+    <%= link_to 'ASC', params.merge({ sort_by: 'ascending' }), class: 'btn btn-primary' %>
+    <%= link_to 'DESC', params.merge({ sort_by: 'descending' }), class: 'btn btn-primary' %>
   </div>
 
   <table class="table table-condensed table-responsive table-striped">
