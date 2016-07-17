@@ -1,0 +1,55 @@
+.container
+  = link_to 'Refresh', refresh_path, method: :post, class: 'btn btn-default'
+  = link_to 'Reset', root_path, class: 'btn btn-default'
+
+  %div
+    %h1 Filter
+    = params_link '<= RA', 'btn-success', max_v: 18
+    = params_link '<= Lin', 'btn-success', max_v: 19
+    = params_link '<= tri', 'btn-success', max_v: 20
+    = params_link '<= SPA', 'btn-success', max_v: 21
+    = params_link '<= PEN', 'btn-success', max_v: 22
+    = params_link '<= cop', 'btn-success', max_v: 23
+
+    = params_link '< HC', 'btn-warning', max_clear: 4
+    = params_link '< NC', 'btn-warning', max_clear: 3
+    = params_link '< EC', 'btn-warning', max_clear: 2
+
+    = params_link 'Low Priority', 'btn-info', min_pr: 1
+    = params_link 'Med Priority', 'btn-info', min_pr: 2
+    = params_link 'High Priority', 'btn-info', min_pr: 3
+
+  %div
+    %h1 Sort
+    = params_link 'Alphabet', 'btn-danger', sort: 'title'
+    = params_link 'NC level', 'btn-danger', sort: 'nc_level'
+    = params_link 'HC level', 'btn-danger', sort: 'hc_level'
+    = params_link 'Notes', 'btn-danger', sort: 'notes'
+    = params_link 'Clear', 'btn-danger', sort: 'clear'
+    = params_link 'Priority', 'btn-danger', sort: 'target_priority'
+
+    = params_link 'ASC', 'btn-primary', sort_by: 'ascending'
+    = params_link 'DESC', 'btn-primary', sort_by: 'descending'
+
+  %table.table.table-condensed.table-responsive.table-striped
+    %thead
+      %tr
+        %th Clear
+        %th Notes
+        %th Version
+        %th Title
+        %th NC
+        %th HC
+        %th Score
+        %th Miss Count
+    %tbody
+      - @charts.each do |chart|
+        %tr
+          %td{ style: "background-color: #{chart.clear}" }
+          %td= chart.notes
+          %td= chart.version
+          %td= chart.title + " " + chart.diff
+          %td= chart.nc_gimmicks ? bold(chart.nc_level) : chart.nc_level
+          %td= chart.hc_gimmicks ? bold(chart.hc_level) : chart.hc_level
+          %td= chart.calc_rank
+          %td= chart.miss

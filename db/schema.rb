@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702023923) do
+ActiveRecord::Schema.define(version: 20160717171553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20160702023923) do
     t.integer  "clear"
     t.integer  "score"
     t.integer  "miss"
-    t.boolean  "gimmicks"
     t.integer  "nc_level"
     t.integer  "hc_level"
     t.integer  "target_clear"
@@ -33,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160702023923) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.boolean  "just_updated"
+    t.boolean  "nc_gimmicks"
+    t.boolean  "hc_gimmicks"
   end
 
 end

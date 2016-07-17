@@ -11,6 +11,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'execjs'
+gem 'dotenv'
+gem 'haml'
+gem 'annotate'
 
 group :development do
   gem 'rails_12factor'
