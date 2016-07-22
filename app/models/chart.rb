@@ -75,8 +75,11 @@ class Chart < ApplicationRecord
 
   def self.update_from_data(song_data, level_data, chart_object)
     song = song_data['data']
-    level = get_level level_data['categories']
-    puts level
+    level = if level_data.nil?
+              { nc: nil, hc: nil, nc_gimmicks: nil, hc_gimmicks: nil }
+            else
+              get_level level_data['categories']
+            end
     chart_object.update(songid: song['id'], diff: song['diff'],
                         notes: song['notes'], title: song['title'],
                         version: song['version'], clear: song_data['clear'],
