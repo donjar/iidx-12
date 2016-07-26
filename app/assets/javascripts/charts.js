@@ -1,2 +1,12 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).ready(function() {
+	$('.target-clear').change(function() {
+		$.post($(this).data('href'), {
+			target_clear: this.value,
+		});
+	});
+	$('.target-priority').change(function() {
+		$.post($(this).data('href'), {
+			target_priority: this.value,
+		});
+	});
+});

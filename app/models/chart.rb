@@ -28,6 +28,7 @@ class Chart < ApplicationRecord
                 'blue' => 4, 'red' => 5, 'yellow' => 6, 'teal' => 7 }
   enum diff: { '[a]' => 'spa', '[h]' => 'sph', '[n]' => 'spn' }
 
+  require 'open-uri'
   @chart_hash = JSON.load open('http://json.iidx.me/donjar/sp/level/12/')
   @level_hash = JSON.load open('http://iidx.insane.pe.kr/json/musiclist/sp/level/12/')
 
@@ -35,6 +36,10 @@ class Chart < ApplicationRecord
   NC_GIMMICKS = '노멀 개인차'.freeze
   HC = '처리력'.freeze
   HC_GIMMICKS = '개인차'.freeze
+
+  def to_s
+    title + " " + diff
+  end
 
   def self.populate_data
     @chart_hash['musicdata'].each do |chart|
