@@ -41,26 +41,22 @@
         %th Title
         %th NC
         %th HC
-        %th Score
-        %th Miss Count
         %th Target
         %th Priority
+        %th Desc
+        %th Score
+        %th Miss Count
     %tbody
       - @charts.each do |chart|
         %tr
           %td{ style: "background-color: #{chart.clear}" }
           %td= chart.notes
           %td= chart.version
-          %td= chart
+          %td= link_to chart, edit_path(chart)
           %td= chart.nc_gimmicks ? bold(chart.nc_level) : chart.nc_level
           %td= chart.hc_gimmicks ? bold(chart.hc_level) : chart.hc_level
+          %td= chart.target_clear
+          %td= chart.target_priority
+          %td= chart.description
           %td= chart.calc_rank
           %td= chart.miss
-          %td= select_tag 'target_clear',
-            options_for_select(clear_hash, chart.target_clear),
-            class: 'form-control input-sm target-clear',
-            id: '', 'data-href' => update_path(chart)
-          %td= select_tag 'target_priority',
-            options_for_select(['', 1, 2, 3], chart.target_priority),
-            class: 'form-control input-sm target-priority',
-            id: '', 'data-href' => update_path(chart)

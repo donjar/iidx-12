@@ -10,7 +10,7 @@ module ChartsHelper
 
   end
 
-  def clear_hash
-    { '' => 0, 'EC' => 3, 'NC' => 4, 'HC' => 5, 'EXHC' => 6 }
+  def priority_hash
+    { '' => nil, 'Low' => 1, 'Mid' => 2, 'High' => 3 }
   end
 end

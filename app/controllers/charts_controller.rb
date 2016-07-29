@@ -8,9 +8,13 @@ class ChartsController < ApplicationController
     redirect_to '/'
   end
 
+  def edit
+    @chart = Chart.find(params[:id])
+  end
+
   def update
-    c = Chart.find(params[:id])
-    c.update(chart_params)
+    Chart.find(params[:id]).update(chart_params)
+    redirect_to '/'
   end
 
   private

@@ -26,6 +26,10 @@
 class Chart < ApplicationRecord
   enum clear: { 'white' => 0, 'gray' => 1, 'pink' => 2, 'green' => 3,
                 'blue' => 4, 'red' => 5, 'yellow' => 6, 'teal' => 7 }
+  enum target_clear: { 'NP' => 0, 'Fail' => 1, 'AC' => 2, 'EC' => 3,
+                       'NC' => 4, 'HC' => 5, 'EXHC' => 6, 'FC' => 7 }
+  enum target_priority: {'low' => 1, 'mid' => 2, 'high' => 3 }
+
   enum diff: { '[a]' => 'spa', '[h]' => 'sph', '[n]' => 'spn' }
 
   require 'open-uri'
@@ -125,13 +129,13 @@ class Chart < ApplicationRecord
   end
 
   def self.process_from_params(params)
-    params[:sort] ||= 'title'
     res = all
     res = res.where('version <= ?', params[:max_v]) if params[:max_v]
     res = res.where('clear <= ?', params[:max_clear]) if params[:max_clear]
     res = res.where('target_priority <= ?', params[:min_pr]) if params[:min_pr]
     res = res.order(params[:sort].to_s) if params[:sort]
     res = res.reverse if params[:sort_by] == 'descending'
+    res = res.order('title')
     res
   end
 end
