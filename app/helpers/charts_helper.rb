@@ -7,7 +7,6 @@ module ChartsHelper
     link_to text, params.merge(prms).permit(:sort, :max_v, :max_clear,
                                             :min_pr, :sort_by),
             class: "btn #{cls}"
-
   end
 
   def priority_hash

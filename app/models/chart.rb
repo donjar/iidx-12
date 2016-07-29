@@ -24,12 +24,11 @@
 #
 
 class Chart < ApplicationRecord
-  enum clear: { 'white' => 0, 'gray' => 1, 'pink' => 2, 'green' => 3,
+  enum clear: { '' => nil, 'white' => 0, 'gray' => 1, 'pink' => 2, 'green' => 3,
                 'blue' => 4, 'red' => 5, 'yellow' => 6, 'teal' => 7 }
-  enum target_clear: { 'NP' => 0, 'Fail' => 1, 'AC' => 2, 'EC' => 3,
+  enum target_clear: { '' => nil, 'NP' => 0, 'Fail' => 1, 'AC' => 2, 'EC' => 3,
                        'NC' => 4, 'HC' => 5, 'EXHC' => 6, 'FC' => 7 }
-  enum target_priority: {'low' => 1, 'mid' => 2, 'high' => 3 }
-
+  enum target_priority: { '' => nil, 'low' => 1, 'mid' => 2, 'high' => 3 }
   enum diff: { '[a]' => 'spa', '[h]' => 'sph', '[n]' => 'spn' }
 
   require 'open-uri'
@@ -42,7 +41,7 @@ class Chart < ApplicationRecord
   HC_GIMMICKS = '개인차'.freeze
 
   def to_s
-    title + " " + diff
+    title + ' ' + diff
   end
 
   def self.populate_data
@@ -77,7 +76,7 @@ class Chart < ApplicationRecord
     end
 
     letter_to_number = { 'S+' => 10, 'S' => 9, 'A+' => 8, 'A' => 7, 'B+' => 6,
-      'B' => 5, 'C' => 4, 'D' => 3, 'E' => 2, 'F' => 1 }
+                         'B' => 5, 'C' => 4, 'D' => 3, 'E' => 2, 'F' => 1 }
     { nc: letter_to_number[nc], nc_gimmicks: nc_gimmicks,
       hc: letter_to_number[hc], hc_gimmicks: hc_gimmicks }
   end
