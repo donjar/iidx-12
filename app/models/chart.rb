@@ -137,4 +137,11 @@ class Chart < ApplicationRecord
     res = res.order('title')
     res
   end
+
+  before_save do
+    if Chart.target_clears[target_clear] <= Chart.clears[clear]
+      self.target_clear = nil
+      self.target_priority = nil
+    end
+  end
 end
