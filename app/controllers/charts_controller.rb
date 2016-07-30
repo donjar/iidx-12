@@ -20,6 +20,6 @@ class ChartsController < ApplicationController
   private
 
   def chart_params
-    params.permit(:id, :target_clear, :target_priority)
+    params.require(:chart).permit(:description, :target_clear, :target_priority)
   end
 end

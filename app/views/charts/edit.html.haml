@@ -1,17 +1,17 @@
 .container
   %h1= @chart
 
-  = form_for update_path(@chart) do |f|
+  = form_for @chart, url: update_path(@chart) do |f|
     .row
       .col-sm-4
         %h2 Target Clear
-        = f.select :target_clear, Chart.target_clears.keys.to_a.push(nil), {},
+        = f.select :target_clear, [nil] + Chart.target_clears.keys.to_a, {},
           class: 'form-control'
 
       .col-sm-4
         %h2 Target Priority
         = f.select :target_priority,
-          Chart.target_priorities.keys.to_a.push(nil), {}, class: 'form-control'
+          [nil] + Chart.target_priorities.keys.to_a, {}, class: 'form-control'
 
       .col-sm-4
         %h2 Notes
