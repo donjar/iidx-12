@@ -139,7 +139,8 @@ class Chart < ApplicationRecord
   end
 
   before_save do
-    if Chart.target_clears[target_clear] <= Chart.clears[clear]
+    if target_clear && clear &&
+       Chart.target_clears[target_clear] <= Chart.clears[clear]
       self.target_clear = nil
       self.target_priority = nil
     end
