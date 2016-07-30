@@ -12,4 +12,8 @@ module ChartsHelper
   def priority_hash
     { '' => nil, 'Low' => 1, 'Mid' => 2, 'High' => 3 }
   end
+
+  def all_params
+    params.permit(:sort, :max_v, :max_clear, :min_pr, :sort_by)
+  end
 end

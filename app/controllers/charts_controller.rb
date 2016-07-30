@@ -5,7 +5,7 @@ class ChartsController < ApplicationController
 
   def refresh
     Chart.populate_data
-    redirect_to '/'
+    redirect_to root_path
   end
 
   def edit
@@ -14,7 +14,7 @@ class ChartsController < ApplicationController
 
   def update
     Chart.find(params[:id]).update(chart_params)
-    redirect_to '/'
+    redirect_to root_path(request.GET)
   end
 
   private

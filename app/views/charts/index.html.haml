@@ -52,7 +52,7 @@
           %td{ style: "background-color: #{chart.clear}" }
           %td= chart.notes
           %td= chart.version
-          %td= link_to chart, edit_path(chart)
+          %td= link_to chart, edit_path(chart, all_params)
           %td= chart.nc_gimmicks ? bold(chart.nc_level) : chart.nc_level
           %td= chart.hc_gimmicks ? bold(chart.hc_level) : chart.hc_level
           %td= chart.target_clear

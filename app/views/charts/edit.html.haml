@@ -1,7 +1,7 @@
 .container
   %h1= @chart
 
-  = form_for @chart, url: update_path(@chart) do |f|
+  = form_for @chart, url: update_path(@chart, all_params) do |f|
     .row
       .col-sm-4
         %h2 Target Clear
