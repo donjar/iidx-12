@@ -5,13 +5,13 @@
     .row
       .col-sm-4
         %h2 Target Clear
-        = f.select :target_clear, Chart.target_clears.keys.to_a, {},
+        = f.select :target_clear, Chart.target_clears.keys.to_a.push(nil), {},
           class: 'form-control'
 
       .col-sm-4
         %h2 Target Priority
         = f.select :target_priority,
-          Chart.target_priorities.keys.to_a, {}, class: 'form-control'
+          Chart.target_priorities.keys.to_a.push(nil), {}, class: 'form-control'
 
       .col-sm-4
         %h2 Notes

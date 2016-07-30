@@ -24,11 +24,11 @@
 #
 
 class Chart < ApplicationRecord
-  enum clear: { '' => nil, 'white' => 0, 'gray' => 1, 'pink' => 2, 'green' => 3,
+  enum clear: { 'white' => 0, 'gray' => 1, 'pink' => 2, 'green' => 3,
                 'blue' => 4, 'red' => 5, 'yellow' => 6, 'teal' => 7 }
-  enum target_clear: { '' => nil, 'NP' => 0, 'Fail' => 1, 'AC' => 2, 'EC' => 3,
+  enum target_clear: { 'NP' => 0, 'Fail' => 1, 'AC' => 2, 'EC' => 3,
                        'NC' => 4, 'HC' => 5, 'EXHC' => 6, 'FC' => 7 }
-  enum target_priority: { '' => nil, 'low' => 1, 'mid' => 2, 'high' => 3 }
+  enum target_priority: { 'low' => 1, 'mid' => 2, 'high' => 3 }
   enum diff: { '[a]' => 'spa', '[h]' => 'sph', '[n]' => 'spn' }
 
   require 'open-uri'
