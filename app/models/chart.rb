@@ -133,8 +133,8 @@ class Chart < ApplicationRecord
     res = res.where('clear <= ?', params[:max_clear]) if params[:max_clear]
     res = res.where('target_priority <= ?', params[:min_pr]) if params[:min_pr]
     res = res.order(params[:sort].to_s) if params[:sort]
-    res = res.reverse if params[:sort_by] == 'descending'
     res = res.order('title')
+    res = res.reverse if params[:sort_by] == 'descending'
     res
   end
 
