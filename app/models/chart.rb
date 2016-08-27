@@ -32,8 +32,8 @@ class Chart < ApplicationRecord
   enum diff: { '[a]' => 'spa', '[h]' => 'sph', '[n]' => 'spn' }
 
   require 'open-uri'
-  @chart_hash = JSON.load open('http://json.iidx.me/donjar/sp/level/12/')
-  @level_hash = JSON.load open('http://iidx.insane.pe.kr/json/musiclist/sp/level/12/')
+  @chart_link = 'http://json.iidx.me/donjar/sp/level/12/'
+  @level_link = 'http://iidx.insane.pe.kr/json/musiclist/sp/level/12/'
 
   NC = '노멀'.freeze
   NC_GIMMICKS = '노멀 개인차'.freeze
@@ -45,10 +45,12 @@ class Chart < ApplicationRecord
   end
 
   def self.populate_data
-    @chart_hash['musicdata'].each do |chart|
+    chart_hash = JSON.load open(@chart_link)
+    level_hash = JSON.load open(@level_link)
+    chart_hash['musicdata'].each do |chart|
       c = Chart.find_by(songid: chart['data']['id'],
                         diff: chart['data']['diff']) || Chart.new
-      level_data = @level_hash['songs'].find do |s|
+      level_data = level_hash['songs'].find do |s|
         s['songtitle'] == chart['data']['title']
       end
       update_from_data chart, level_data, c
